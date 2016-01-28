@@ -1,0 +1,5 @@
+pycurl
+python-jenkins
+requests
+jenkinsapi
+beautifulsoup4
