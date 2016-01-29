@@ -3,3 +3,4 @@ python-jenkins
 requests
 jenkinsapi
 beautifulsoup4
+lxml

@@ -1,9 +1,12 @@
+#TODO: put API token and Jenkins userid in .file + git-crypt it
+# read userid/token from above file
 import requests
 import pprint
 import jenkins
 from jenkinsapi.jenkins import Jenkins
 from bs4 import BeautifulSoup
 import re
+from lxml import etree
 
 # URL = 'https://ci-dev.service.dsd.io'
 URL = 'http://ci.dsd.io'
@@ -41,12 +44,31 @@ def scrape_jenkins():
         #    if m:
         #       job = m.group(0)
         #       print job
+def process_command(lines):
+    pass
 
 def get_config_xml(job):
+    print "DEBUG: now working on %s" % job
     URL = "http://ci.dsd.io/job/{0}/config.xml".format(job)
     r = requests.get(URL, auth=('bennythejudge', '7a47bceafd585e021b3c1ce7358caada'))
-    soup = BeautifulSoup(r._content, 'html.parser')
-    print(soup.prettify())
+    soup = BeautifulSoup(r._content, 'xml')
+    
+    # print(soup.prettify())
+    # extract the command (what if there is more than one <command> in the job?)
+    if soup.command:
+        command_lines = soup.command.get_text()
+        print "**********"
+        print command_lines
+        process_command(command_lines)
+        print "**********"
+        print
+    else:
+        print "DEBUG: empty command section detected"
+    # extract the scripts
+    #
+    # <builders>
+    # <hudson.tasks.shell>
+    # <command>
     
 if __name__ == '__main__':
     jobs = scrape_jenkins()
