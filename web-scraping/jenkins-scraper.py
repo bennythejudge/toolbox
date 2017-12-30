@@ -11,6 +11,8 @@ from lxml import etree
 # URL = 'https://ci-dev.service.dsd.io'
 URL = 'http://ci.dsd.io'
 headers = { 'Cookie': '_ga=GA1.2.1936921519.1433933780; JSESSIONID.eddd3cda=pr5o07sn0a8vd72zmyxrz3b5; screenResolution=1920x1200' }
+keywords = ['coverage', 'pip', 'docker', 'python', 'mkvirtualenv', 'source', 'rm', 'fab', 'curl', 'nc', 'git']
+
 
 def get_server_instance():
     jenkins_url = 'http://jenkins_host:8080'
@@ -44,11 +46,30 @@ def scrape_jenkins():
         #    if m:
         #       job = m.group(0)
         #       print job
+
+def build_re(keywords):
+    s = "^"
+    for k in keywords:
+        
+
 def process_command(lines):
-    pass
+    # print "lines: %s" % lines
+    # match and remember first word of each line
+    m = re.compile(r"(^\w+)")
+    # print "lines: %r" % lines
+    for line in lines.splitlines():
+        # print "line: %s" % line
+        result = m.search(line)
+        if result:
+            word = result.groups()
+            print "matched: %s" % word
+            print
+            print
+    print
+    print
 
 def get_config_xml(job):
-    print "DEBUG: now working on %s" % job
+    # print "DEBUG: now working on %s" % job
     URL = "http://ci.dsd.io/job/{0}/config.xml".format(job)
     r = requests.get(URL, auth=('bennythejudge', '7a47bceafd585e021b3c1ce7358caada'))
     soup = BeautifulSoup(r._content, 'xml')
@@ -57,13 +78,15 @@ def get_config_xml(job):
     # extract the command (what if there is more than one <command> in the job?)
     if soup.command:
         command_lines = soup.command.get_text()
-        print "**********"
-        print command_lines
+        # print "**********"
+        # print command_lines
         process_command(command_lines)
-        print "**********"
+        # print "**********"
         print
-    else:
-        print "DEBUG: empty command section detected"
+        print
+        # print
+    # else:
+    #     print "DEBUG: empty command section detected"
     # extract the scripts
     #
     # <builders>
