@@ -45,6 +45,7 @@ rm -Rf ~/.AndroidStudio*
 rm -Rf ~/.android
 rm -Rf ~/Library/Android*
 df -g
+set +xe
 
 echo "Done"
 exit 0
