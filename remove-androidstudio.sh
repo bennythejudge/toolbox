@@ -1,22 +1,23 @@
 #!/usr/bin/env bash
 
-echo "Remove AndroidStudio"
-
-echo "\aATTENTION!!!!\a"
+tput bel
+echo "ATTENTION!!!!"
 echo "This script will completely wipe out AndroidStudio, Android SDKs and any related file from this computer"
 echo "Use at your own risk"
-echo "Hit control-C if you want to leave this script without making any change to your computer"
+tput bel
+echo "Hit control-C if you want to leave this script now without making any change to your computer"
 echo "Android projects will not be deleted"
 echo "Do you want to continue? [y/n]"
 read answer
-if [[ "$answer" = "y"]]; then
-  print "yes"
-  exit 0
+if [[ "$answer" == 'y' ]]; then
+  echo "yes"
 else
-  print "no"
-  exit 1
+  echo "Leaving system unchanged!"
+  exit 0
 fi
 
+echo "Removing AndroidStudio"
+set -xe
 
 rm -Rf ~/Library/Preferences/AndroidStudio*
 rm -Rf ~/Library/Preferences/com.google.android.*
@@ -34,7 +35,6 @@ rm -Rf ~/Library/Android*
 rm -Rf /usr/local/var/lib/android-sdk/
 rm -Rf ~/.AndroidStudio*
 rm -Rf /Applications/Android\ Studio.app/
-rm -rf
 rm -Rf ~/Library/Preferences/AndroidStudio*
 rm -Rf ~/Library/Preferences/com.google.android.*
 rm -Rf ~/Library/Preferences/com.android.*
@@ -44,4 +44,7 @@ rm -Rf ~/Library/Caches/AndroidStudio*
 rm -Rf ~/.AndroidStudio*
 rm -Rf ~/.android
 rm -Rf ~/Library/Android*
-df -k
+df -g
+
+echo "Done"
+exit 0
