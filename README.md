@@ -13,3 +13,4 @@
 - `remove-androidstudio.sh`
 
 Remove android studio from a macos. Based on various posts.
+	
