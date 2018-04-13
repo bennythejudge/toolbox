@@ -1,0 +1,5 @@
+# source in .bash_profile
+
+alias d='docker'
+alias dps='docker ps'
+alias dlf='docker logs -f'
