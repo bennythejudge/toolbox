@@ -16,7 +16,7 @@ keywords = ['coverage', 'pip', 'docker', 'python', 'mkvirtualenv', 'source', 'rm
 
 def get_server_instance():
     jenkins_url = 'http://jenkins_host:8080'
-    server = Jenkins(URL, username = 'bennythejudge', password = '7a47bceafd585e021b3c1ce7358caada')
+    server = Jenkins(URL, username = 'bennythejudge', password = '')
     return server
 
 def job_entry(href):
@@ -24,7 +24,7 @@ def job_entry(href):
 
 def scrape_jenkins():
     job_list = []
-    r = requests.get(URL, auth=('bennythejudge', '7a47bceafd585e021b3c1ce7358caada'))
+    r = requests.get(URL, auth=('bennythejudge', ''))
     soup = BeautifulSoup(r._content, 'html.parser')
     m = re.compile("^job")
     
@@ -71,7 +71,7 @@ def process_command(lines):
 def get_config_xml(job):
     # print "DEBUG: now working on %s" % job
     URL = "http://ci.dsd.io/job/{0}/config.xml".format(job)
-    r = requests.get(URL, auth=('bennythejudge', '7a47bceafd585e021b3c1ce7358caada'))
+    r = requests.get(URL, auth=('bennythejudge', ''))
     soup = BeautifulSoup(r._content, 'xml')
     
     # print(soup.prettify())
