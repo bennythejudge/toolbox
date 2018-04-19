@@ -21,6 +21,23 @@ elif [[ -e /etc/debian_version ]]; then
 elif [[ -e /etc/os-release ]]; then
 	echo "I found /etc/os-release"
 	cat /etc/os-release
+elif [[ -e /etc/*-release ]]; then
+	echo "Found something /etc/*-release"
+	ls /etc/*-release
+	for i in $(ls /etc/*-release); do
+		echo $i
+		cat $i
+	done
 fi
+
+
+rc=$(which lsb_release > /dev/null 2>&1)
+if [[ $rc == 0 ]]; then
+	echo "I found lsb_release"
+	lsb_release -a
+else
+	echo "No lsb_release?"
+fi
+
 
 echo "$(date) - $(basename $0) - completed"
