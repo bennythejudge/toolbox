@@ -9,6 +9,7 @@ rc=$?
 if [[ $rc == 0 ]]; then
 	echo "Running on MacOs"
 	sw_vers
+	system_profiler SPSoftwareDataType
 	exit 0
 fi
 
