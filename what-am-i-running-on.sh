@@ -2,6 +2,16 @@
 
 echo "$(date) - $(basename $0) - starting"
 echo "Hostname: $(hostname)"
+uname -a
+
+sw_vers=$(which sw_vers > /dev/null 2>&1)
+rc=$?
+if [[ $rc == 0 ]]; then
+	echo "Running on MacOs"
+	sw_vers
+	exit 0
+fi
+
 
 if [[ -e /proc/version ]]; then
         echo "Content of /proc/version:"
@@ -10,7 +20,6 @@ else
         echo "I cannot find /proc/version ?????"
 fi
 
-echo "uname -a: $(uname -a)"
 
 if [[ -e /etc/redhat-release ]]; then
         echo "RH distro - content of /etc/redhat-release"
@@ -35,8 +44,6 @@ rc=$(which lsb_release > /dev/null 2>&1)
 if [[ $rc == 0 ]]; then
 	echo "I found lsb_release"
 	lsb_release -a
-else
-	echo "No lsb_release?"
 fi
 
 
