@@ -1,0 +1,30 @@
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority: ca-hou02-benedetto-test.pem
+    server: https://xxx.xx.xx.xx:xxxxx
+  name: benedetto-test
+- cluster:
+    server: ""
+  name: scratch
+contexts:
+- context:
+    cluster: ""
+    user: ""
+  name: dev-frontend
+- context:
+    cluster: ""
+    user: ""
+  name: dev-storage
+- context:
+    cluster: ""
+    user: ""
+  name: exp-scratch
+current-context: ""
+kind: Config
+preferences: {}
+users:
+- name: developer
+  user: {}
+- name: experimenter
+  user: {}
