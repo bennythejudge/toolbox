@@ -1,5 +1,7 @@
 # toolbox
 
+[![GuardRails badge](https://badges.production.guardrails.io/bennythejudge/toolbox.svg)](https://www.guardrails.io)
+
 ## a bunch of scripts
 
 ### CPU stress
