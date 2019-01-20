@@ -1,6 +1,6 @@
 # Bash Notes
 
-### Editing string variables using parameter expantion (`%` and `#`)
+### Editing string variables using parameter expansion (`%` and `#`)
 
 ```
 In Bash (and ksh, zsh, dash, etc.), you can use parameter expansion with % which will
@@ -15,6 +15,14 @@ removed. If you double the character, the longest will be removed.
 - for example: remove the trailing characters following a dot in a filename:
 
 ```
-a="file.yaml.gpg"; echo ${a%.*}
+bash-3.2$ a="file.yaml.gpg"
+bash-3.2$ echo ${a%.*}
 file.yaml
+```
+
+- second example: change the first part of the filename without changing anything past the first dot:
+
+```
+a="file.yaml.gpg"; echo "newname".${a#*.}
+newname.yaml.gpg
 ```
