@@ -18,4 +18,5 @@ Remove android studio from a macos. Based on various posts.
 ### detect Linux distro, kernel version and more details
 
 - `what-am-i-running-on.sh`
-	
+
+### [Bash notes](bash-notes.md)
