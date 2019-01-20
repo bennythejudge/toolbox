@@ -1,6 +1,6 @@
 # toolbox
 
-## a bunch of scripts
+## a brain dump (includeing a bunch of useless scripts)
 
 ### CPU stress
 
