@@ -1,0 +1,1 @@
+for i in */*; do file=$(basename "$i"); ext=${i##*.}; filename=${file%.*}; d=`gdate +%Y%m%d_%H%M%S_%T.%6N`; nfile="${filename}.${d}.${ext}"; echo "$i: $file diventa ${nfile}" ; cp "$i" "/Users/benedettologiudice/Music/new-music/${nfile}"; done
